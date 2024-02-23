@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" dunder init """
 from flask import Flask, Blueprint
 from api.v1.views import *
 

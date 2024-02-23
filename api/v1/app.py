@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+""" app.py """
 from flask import Flask, blueprints, jsonify
 from models import storage
 from api.v1.views import app_views
 import os
+
 HBNB_API_HOST = os.getenv('HBNB_API_HOST')
 HBNB_API_PORT = os.getenv('HBNB_API_PORT')
 

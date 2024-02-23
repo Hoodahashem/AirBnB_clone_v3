@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+""" index.py """
 from flask import Flask, Blueprint, jsonify
 from api.v1.views import app_views
 from models.amenity import Amenity
