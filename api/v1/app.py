@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" app.py """
+""" a script that starts a Flask web application """
 from flask import Flask, blueprints, jsonify
 from models import storage
 from api.v1.views import app_views

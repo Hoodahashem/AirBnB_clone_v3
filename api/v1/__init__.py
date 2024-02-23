@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-""" dunder init """
+""" a script that starts a Flask web application"""
 from flask import Flask, Blueprint
 from api.v1.views import *
 
