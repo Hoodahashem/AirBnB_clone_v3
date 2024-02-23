@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 from flask import Flask, blueprints
 from models import storage
-from views import app_views
+from api.v1.views import app_views
 import os
 HBNB_API_HOST = os.getenv('HBNB_API_HOST')
 HBNB_API_PORT = os.getenv('HBNB_API_PORT')
