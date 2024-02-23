@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, jsonify
 from api.v1.views import app_views
 from models.amenity import Amenity
 from models.city import City
@@ -13,7 +13,7 @@ from models import storage
 @app_views.route('/status', strict_slashes=False)
 def status():
     """Return status"""
-    return {"status": "OK"}
+    return (jsonify({"status": "OK"}))
 
 
 @app_views.route("/stats", strict_slashes=False)
@@ -47,4 +47,4 @@ def stats():
         elif i == User:
             count_dict["users"] = count
 
-    return (count_dict)
+    return (jsonify(count_dict))

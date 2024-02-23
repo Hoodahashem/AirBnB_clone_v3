@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-from flask import Flask, blueprints
+from flask import Flask, blueprints, jsonify
 from models import storage
 from api.v1.views import app_views
 import os
@@ -20,6 +20,14 @@ app.register_blueprint(app_views)
 def teardown_db(exception):
     """teardown"""
     storage.close()
+
+
+@app.errorhandler(404)
+def page_not_found(error):
+    """  404  """
+    status = {"error": "Not found"}
+    return jsonify(status), 404
+
 
 if __name__ == '__main__':
     app.run(host=HBNB_API_HOST, port=HBNB_API_PORT, threaded=True)
