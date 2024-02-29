@@ -67,6 +67,75 @@ test_db_storage.py'])
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
 
+    def test_all(self):
+        """Test all method"""
+        storage = DBStorage()
+        obj = storage.all()
+        self.assertEqual(type(obj), dict)
+
+    def test_all_cls(self):
+        """Test all method with class"""
+        storage = DBStorage()
+        obj = storage.all(State)
+        self.assertEqual(type(obj), dict)
+
+    def test_new(self):
+        """Test new method"""
+        storage = DBStorage()
+        state = State(name="California")
+        storage.new(state)
+        key = state.__class__.__name__ + "." + state.id
+        obj = storage.all()
+        self.assertTrue(key in obj)
+
+    def test_save(self):
+        """Test save method"""
+        storage = DBStorage()
+        state = State(name="California")
+        storage.new(state)
+        storage.save()
+        with open("file.json", "r") as file:
+            self.assertTrue(len(file.read()) > 0)
+
+
+    def test_reload(self):
+        """Test reload method"""
+        storage = DBStorage()
+        state = State(name="California")
+        storage.new(state)
+        storage.save()
+        storage.reload()
+        obj = storage.all()
+        key = state.__class__.__name__ + "." + state.id
+        self.assertTrue(key in obj)
+
+    def test_delete(self):
+        """Test delete method"""
+        storage = DBStorage()
+        state = State(name="California")
+        storage.new(state)
+        storage.save()
+        storage.delete(state)
+        obj = storage.all()
+        self.assertFalse(state in obj.values())
+
+    def test_get(self):
+        """Test get method"""
+        storage = DBStorage()
+        state = State(name="California")
+        storage.new(state)
+        storage.save()
+        obj = storage.get(State, state.id)
+        self.assertEqual(obj, state)
+
+    def test_count(self):
+        """Test count method"""
+        storage = DBStorage()
+        state = State(name="California")
+        storage.new(state)
+        storage.save()
+        count = storage.count(State)
+        self.assertEqual(count, 1)
 
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""

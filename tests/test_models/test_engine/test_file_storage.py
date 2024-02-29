@@ -67,6 +67,63 @@ test_file_storage.py'])
             self.assertTrue(len(func[1].__doc__) >= 1,
                             "{:s} method needs a docstring".format(func[0]))
 
+    def test_all(self):
+        """Test all method"""
+        self.assertIsNot(FileStorage.all.__doc__, None,
+                         "all method needs a docstring")
+        self.assertTrue(len(FileStorage.all.__doc__) >= 1,
+                        "all method needs a docstring")
+    
+    def test_new(self):
+        """Test new method"""
+        self.assertIsNot(FileStorage.new.__doc__, None,
+                         "new method needs a docstring")
+        self.assertTrue(len(FileStorage.new.__doc__) >= 1,
+                        "new method needs a docstring")
+
+    def test_save(self):
+        """Test save method"""
+        self.assertIsNot(FileStorage.save.__doc__, None,
+                         "save method needs a docstring")
+        self.assertTrue(len(FileStorage.save.__doc__) >= 1,
+                        "save method needs a docstring")
+
+    def test_reload(self):
+        """Test reload method"""
+        self.assertIsNot(FileStorage.reload.__doc__, None,
+                         "reload method needs a docstring")
+        self.assertTrue(len(FileStorage.reload.__doc__) >= 1,
+                        "reload method needs a docstring")
+
+    def test_delete(self):
+        """Test delete method"""
+        self.assertIsNot(FileStorage.delete.__doc__, None,
+                         "delete method needs a docstring")
+        self.assertTrue(len(FileStorage.delete.__doc__) >= 1,
+                        "delete method needs a docstring")
+
+    def test_close(self):
+        """Test close method"""
+        self.assertIsNot(FileStorage.close.__doc__, None,
+                         "close method needs a docstring")
+        self.assertTrue(len(FileStorage.close.__doc__) >= 1,
+                        "close method needs a docstring")
+
+    def test_get(self):
+        """Test get method"""
+        self.assertIsNot(FileStorage.get.__doc__, None,
+                         "get method needs a docstring")
+        self.assertTrue(len(FileStorage.get.__doc__) >= 1,
+                        "get method needs a docstring")
+
+    def test_count(self):
+        """Test count method"""
+        self.assertIsNot(FileStorage.count.__doc__, None,
+                         "count method needs a docstring")
+        self.assertTrue(len(FileStorage.count.__doc__) >= 1,
+                        "count method needs a docstring")
+
+
 
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
@@ -113,3 +170,4 @@ class TestFileStorage(unittest.TestCase):
         with open("file.json", "r") as f:
             js = f.read()
         self.assertEqual(json.loads(string), json.loads(js))
+
