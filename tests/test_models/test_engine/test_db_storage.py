@@ -137,6 +137,17 @@ test_db_storage.py'])
         count = storage.count(State)
         self.assertEqual(count, 1)
 
+    def test_get_none(self):
+        """Test get method with None"""
+        storage = DBStorage()
+        obj = storage.get(None, None)
+        self.assertEqual(obj, None)
+
+    def test_count_none(self):
+        """Test count method with None"""
+        storage = DBStorage()
+        count = storage.count(None)
+        self.assertEqual(count, 0)
 class TestFileStorage(unittest.TestCase):
     """Test the FileStorage class"""
     @unittest.skipIf(models.storage_t != 'db', "not testing db storage")
